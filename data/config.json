@@ -1,0 +1,9 @@
+{
+  "ruffleUrl": "vendor/ruffle/ruffle.js",
+  "search": {
+    "name": "SearXNG",
+    "jsonEndpoint": "",
+    "fallbackUrl": "https://duckduckgo.com/?q={q}",
+    "quickLinks": [{"title":"Wikipedia","url":"https://www.wikipedia.org"},{"title":"itch.io HTML5 games","url":"https://itch.io/games/html5"}]
+  }
+}

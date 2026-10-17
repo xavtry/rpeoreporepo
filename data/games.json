@@ -1,0 +1,14 @@
+[
+  {
+    "id": "orbit-dodge",
+    "title": "Orbit Dodge",
+    "description": "Steer your ship around the ring and dodge incoming rocks. Arrow keys or A/D to move.",
+    "genre": "Arcade",
+    "tags": ["singleplayer", "keyboard"],
+    "launchType": "html5",
+    "launchPath": "games/orbit-dodge/index.html",
+    "sourceRepository": "this project",
+    "license": "MIT",
+    "attribution": "Written for NOVA Hub."
+  }
+]
