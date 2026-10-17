@@ -1,0 +1,18 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Orbit Dodge</title>
+<style>html,body{margin:0;height:100%;background:#070b16;overflow:hidden}canvas{display:block;margin:auto;max-width:100%;max-height:100%}</style></head>
+<body><canvas id="c" width="640" height="640"></canvas><script>
+const c=document.getElementById('c'),x=c.getContext('2d'),R=230;let a=0,dir=0,rocks=[],t=0,score=0,dead=false,k={};
+onkeydown=e=>{k[e.key]=1;if(dead&&e.key==' ')reset()};onkeyup=e=>k[e.key]=0;
+function reset(){rocks=[];t=0;score=0;dead=false;a=0}
+function loop(){requestAnimationFrame(loop);x.fillStyle='#070b16';x.fillRect(0,0,640,640);
+x.strokeStyle='#2a4a8a';x.lineWidth=2;x.beginPath();x.arc(320,320,R,0,7);x.stroke();
+if(!dead){dir=(k.ArrowRight||k.d?1:0)-(k.ArrowLeft||k.a?1:0);a+=dir*.045;t++;score=t/60|0;
+if(t%Math.max(18,50-score)==0)rocks.push({an:Math.random()*6.28,r:0,s:2+Math.random()*2+score/20});
+rocks.forEach(o=>o.r+=o.s);rocks=rocks.filter(o=>o.r<R+30);
+const px=320+Math.cos(a)*R,py=320+Math.sin(a)*R;
+for(const o of rocks){const ox=320+Math.cos(o.an)*o.r,oy=320+Math.sin(o.an)*o.r;if(Math.hypot(ox-px,oy-py)<20)dead=true}}
+for(const o of rocks){x.fillStyle='#8892b0';x.beginPath();x.arc(320+Math.cos(o.an)*o.r,320+Math.sin(o.an)*o.r,11,0,7);x.fill()}
+x.fillStyle='#5aa9ff';x.beginPath();x.arc(320+Math.cos(a)*R,320+Math.sin(a)*R,10,0,7);x.fill();
+x.fillStyle='#e8eefc';x.font='20px sans-serif';x.textAlign='center';x.fillText('Score '+score,320,40);
+if(dead){x.font='32px sans-serif';x.fillText('Game over',320,310);x.font='18px sans-serif';x.fillText('Press Space to retry',320,345)}}
+loop();</script></body></html>
